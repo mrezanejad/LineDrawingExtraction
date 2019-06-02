@@ -16,14 +16,57 @@ This approach is devised to recover image curves while preserving singularities 
 
 
 
+## Setup
 
+**NOTE** 
 
+THIS CODE IS TESTED WITH MATLAB 2018b and Windows version of MinGW. Earlier version of MATLAB or other operating system or C compilers may not work with this package. 
 
+To download the code, open a terminal and type:
+```
+https://github.com/mrezanejad/LineDrawingExtraction.git
+```
+This will create a directory `LineDrawingExtraction/` containing all of the code seen here.
+<br>
 
+## Logical Linear Installation
+Instructions to install the logical linear package on Windows:
 
+1) Install MinGW (you can get that from here: http://www.mingw.org/). 
 
+2) Add MinGW bin directory (usually this is the path: `C:\MinGW\bin`) to your environment variable path on your system. 
 
+3) Run a command prompt window and cd to `LineDrawingExtraction/LogicalLinear`.
 
+4) For compilation, run the following commands
+```
+./configure
+make
+```
+
+5) After this step, you must have a binary (e.g. pgmloglin.exe on Windows), that you can use to create image curves. 
+
+## Usage
+
+Usage: %s [-ENP] [-n<ndirs>] [-d<degree>] [-t<thresh>] [input] [out]\n  
+
+Example:
+
+```
+pgmloglin.exe -E input.jpg output.ps
+```
+
+**E is for Edges 
+N is for Negative Contrast Lines 
+P is for Positive Contrast Lines**
+
+You can have all three or a subset of them. 
+
+If the package does not compile on mac or linux, you may install wine (https://www.winehq.org/) and easily run the windows binary. You just need to put wine command before. 
+
+```
+wine pgmloglin.exe -E input.jpg output.ps  
+```
 
 
 
