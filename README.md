@@ -9,4 +9,5 @@ image operators defined in the paper "Logical/Linear Operators for Image Curves"
 
 The original version of this program works with just `pgm` (portable gray map) input files (which is available here: ftp://ftp.cim.mcgill.ca/pub/people/leei/loglin.tar.gz).  The current version uploaded here (which is a fork on the original version), works with most of the standard image formats (`jpg`, `png` and etc.). When compiled, the program pgmloglin will input files and produce a machine readable PostScript file describing the oriented features in the image.  The program will selectively compute any or all of the edge, bright line and dark line labels in the image.
 
+<img src='readme_images/LogicalLinearExample.jpg' width=100%/> 
 
