@@ -1,0 +1,97 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:604: gcc -E conftest.c
+configure:704: gcc -c conftest.c -o conftest.o 1>&5
+conftest.c:1:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+foo(){}
+^
+conftest.c:1:7: warning: control reaches end of non-void function [-Wreturn-type]
+foo(){}
+      ^
+2 warnings generated.
+configure:705: gcc -c conftest.c -o conftest.o 1>&5
+conftest.c:1:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+foo(){}
+^
+conftest.c:1:7: warning: control reaches end of non-void function [-Wreturn-type]
+foo(){}
+      ^
+2 warnings generated.
+configure:710: cc -c conftest.c 1>&5
+conftest.c:1:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+foo(){}
+^
+conftest.c:1:7: warning: control reaches end of non-void function [-Wreturn-type]
+foo(){}
+      ^
+2 warnings generated.
+configure:712: cc -c conftest.c -o conftest.o 1>&5
+conftest.c:1:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+foo(){}
+^
+conftest.c:1:7: warning: control reaches end of non-void function [-Wreturn-type]
+foo(){}
+      ^
+2 warnings generated.
+configure:713: cc -c conftest.c -o conftest.o 1>&5
+conftest.c:1:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+foo(){}
+^
+conftest.c:1:7: warning: control reaches end of non-void function [-Wreturn-type]
+foo(){}
+      ^
+2 warnings generated.
+configure:1019: gcc -o conftest -g -O   conftest.c -lm   1>&5
+configure:1011:6: warning: incompatible redeclaration of library function 'exp' [-Wincompatible-library-redeclaration]
+char exp();
+     ^
+configure:1011:6: note: 'exp' is a builtin with type 'double (double)'
+1 warning generated.
+configure:1065: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1113: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1110:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+main(){return(0);}
+^
+1 warning generated.
+configure:1139: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1204: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1199:67: warning: implicitly declaring library function 'exit' with type 'void (int) __attribute__((noreturn))'
+if (XOR (islower (i), ISLOWER (i)) || toupper (i) != TOUPPER (i)) exit(2);
+                                                                  ^
+configure:1199:67: note: include the header <stdlib.h> or explicitly provide a declaration for 'exit'
+1 warning generated.
+configure:1236: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1236: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1292: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1275:6: warning: incompatible redeclaration of library function 'strdup' [-Wincompatible-library-redeclaration]
+char strdup();
+     ^
+configure:1275:6: note: 'strdup' is a builtin with type 'char *(const char *)'
+1 warning generated.
+configure:1345: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1328:6: warning: incompatible redeclaration of library function 'expf' [-Wincompatible-library-redeclaration]
+char expf();
+     ^
+configure:1328:6: note: 'expf' is a builtin with type 'float (float)'
+1 warning generated.
+configure:1398: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1381:6: warning: incompatible redeclaration of library function 'sinf' [-Wincompatible-library-redeclaration]
+char sinf();
+     ^
+configure:1381:6: note: 'sinf' is a builtin with type 'float (float)'
+1 warning generated.
+configure:1451: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1434:6: warning: incompatible redeclaration of library function 'cosf' [-Wincompatible-library-redeclaration]
+char cosf();
+     ^
+configure:1434:6: note: 'cosf' is a builtin with type 'float (float)'
+1 warning generated.
+configure:1504: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1487:6: warning: incompatible redeclaration of library function 'rint' [-Wincompatible-library-redeclaration]
+char rint();
+     ^
+configure:1487:6: note: 'rint' is a builtin with type 'double (double)'
+1 warning generated.
+configure:1541: gcc -o conftest -g -O   conftest.c -lm  1>&5
+configure:1589: gcc -o conftest -g -O   conftest.c -lm  1>&5

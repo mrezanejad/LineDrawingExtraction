@@ -1,0 +1,77 @@
+.TH pgmloglin 1 "20 July 1995"
+.IX pgmloglin
+.SH NAME
+pgmloglin \- logical/linear edge/line detection on PGM image.
+.SH SYNOPSIS
+.B pgmloglin
+.RB [ -ENP ]
+.RB [ -d
+.IR degree ]
+.RB [ -n
+.IR ndirs ]
+.RB [ -t
+.IR threshold ]
+.RI [ pgmfile ]
+.RI [ out.ps ]
+.SH DESCRIPTION
+Reads a portable graymap as input.
+Creates a structured PostScript file which represents the edges/lines
+in the image using Logical/Linear operators.
+.PP
+The concept of a Logical/Linear operator is described in the paper
+"Logical/Linear Operators for Image Curves" published in PAMI (in
+press), and also available as
+.PP
+.I ftp://ftp.cim.mcgill.ca/pub/people/leei/loglin.ps.gz
+.PP
+If the file
+.I pgmfile
+is not provided, then standard input is used.
+Likewise, if 
+.I out.ps
+is not provided, then the output is written to standard output.
+.PP
+The output is a special machine-readable PostScript file, which will
+draw a sketch of the edges and lines found in the image.
+.SH OPTIONS
+.TP
+.B -d \fIdegree\fR
+Change the degree of the L/L combinators used (\fIdefault 32\fR)
+.TP
+.B -E
+Use L/L edge operators to find step-like discontinuities.
+.TP
+.B -P
+Use L/L line operators to find bright lines (positive contrast lines
+or roof edges).
+.TP
+.B -N
+Use L/L line operators to find dark lines (negative contrast lines or
+valley edges).
+.TP
+.B -n \fIndirs\fR
+Change the number of distinct directions (\fIdefault 8\fR) represented
+by the output labels.  This number represents a regular sampling over
+180 degrees, thus there are twice as many distinct edge labels (which
+covers 360 degrees) as this.
+.TP
+.B -t \fIthreshold\fR
+Change the output threshold (\fIdefault 0.01\fR) to \fIthreshold.\fR
+.SH "SEE ALSO"
+cxconvolve(3), make_cxkern(3), read_labels(3)
+.SH AUTHOR
+Copyright (C) 1995 by McGill University and Lee Iverson
+
+.\" Permission is hereby granted, free of charge, to any person
+.\" obtaining a copy of this software and associated documentation
+.\" files (the "Software"), to deal in the Software without
+.\" restriction, including the rights to use, copy, modify, merge,
+.\" publish, and distribute copies of the Software without fee, and
+.\" to permit persons to whom the Software is furnished to do so,
+.\" subject to the following conditions:
+
+.\" The above copyright notice and this permission notice shall be included in
+.\" all copies or substantial portions of the Software.
+
+.\" Any sale of this software or any work derived from this software shall be
+.\" prohibited without written agreement from the copyright holders.

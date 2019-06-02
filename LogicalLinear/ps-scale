@@ -1,0 +1,34 @@
+#! /usr/bin/perl 
+
+# Assumes that we are working with a 540x720 sized page (letter size
+# with half-inch boundaries).  Takes an EPSF file provided as input
+# and produces a single page which can be sent to a PostScript printer.
+
+$page_w = 540;
+$page_h = 720;
+$border = 36;
+
+while (<>) {
+    if (/^%%BoundingBox: 0 0 ([0-9]*) ([0-9]*)/) {
+	$w = $1;
+	$h = $2;
+	last;
+    }
+    print;
+}
+
+$scl_h = $page_h/$h;
+$scl_w = $page_w/$w;
+$scl = ($scl_h > $scl_w ? $scl_w : $scl_h);
+
+print "%%BoundingBox: $border $border ", $page_w+$border, " ", $page_h+$border, "\n";
+print "%%Orientation: Portrait\n";
+print "%%Pages: 1\n";
+print "%%EndProlog\n";
+print "%%Page: 1 1\n";
+print "gsave $border $border translate $scl $scl scale\n\n";
+
+print;
+while (<>) {print;}
+
+print "\n%%Trailer\ngrestore showpage\n";

@@ -1,0 +1,42 @@
+#! /bin/sh
+
+# Converts a PostScript file to a PNG image.  The first argument is
+# optionally of the form "-s 8" where 8 can be replaced by any
+# number.  If this argument is present, then the image is scaled
+#
+# The single mandatory argument is the name of the PostScript file.
+# This name will have its .ps extension replaced with .png on output.
+#
+# For example, the command:
+#
+#   ps-png -s 4 PaolinaS.ps
+#
+# will produce the file PaolinaS.png, which will be a PNG file scaled
+# four times over the original image.
+#
+#   ps-png PaolinaS.ps
+#
+# will produce the file PaolinaS.png with the same size as the
+# original image.
+
+scale=1
+case $1 in
+-s)
+  shift
+  scale=$1
+  shift
+  ;;
+esac
+
+file=$1
+
+# Calculate sizes for things
+size=`head $file | grep Bound | awk '{print $4, $5}'`
+for v in $size; do
+  x=`echo "$v $scale * p" | dc`
+  if test -n "$ssize"; then ssize="${ssize}x${x}"; else ssize=$x; fi
+done
+res=`echo "72 $scale * p" | dc`
+
+png=`basename $file \.ps`.png
+exec gs -q -dNOPROMPT -dNOPAUSE -dBATCH -sDEVICE=pnggray -r${res} -g${ssize} -sOutputFile=$png $file

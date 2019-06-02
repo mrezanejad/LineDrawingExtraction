@@ -1,0 +1,24 @@
+#! /usr/bin/perl 
+
+# The first argument is a comma-separated list of labels to select for
+# the final image.  For example: "ps-sel 1,2 < doubletoss8.ps" will produce
+# an image with only labels 1 and 2 selected.
+
+eval "\@sel = ($ARGV[0])";
+shift;
+
+while (<>) {
+    print;
+    last if m/^%labels/;
+}
+
+while (<>) {
+    last if m/^end/;
+    my ($x, $y, $l, $v, $type) = split(/ /);
+    print if grep (/^$l$/, @sel);
+} 
+
+print;
+while (<>) {print;}
+
+    

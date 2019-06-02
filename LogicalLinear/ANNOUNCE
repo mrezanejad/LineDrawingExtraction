@@ -1,0 +1,43 @@
+This is to announce the availability of software implementing the
+edge/line detection methods described in the paper "Logical/Linear
+Operators for Image Curves" by Lee Iverson and Steven W. Zucker to be
+published in an upcoming PAMI.  The implementation is both fast
+(considering the amount of computation done) and general, written in
+portable C.
+
+My home page can be found at:
+
+	http://www.ai.sri.com/~leei/
+
+The software is available at:
+
+	ftp://ftp.cim.mcgill.ca/pub/people/leei/loglin.tar.gz
+
+and the accompanying paper (to appear in an upcoming PAMI):
+
+	ftp://ftp.cim.mcgill.ca/pub/people/leei/loglin/loglin.ps.gz
+
+
+			       ABSTRACT
+
+We propose a language for designing image measurement operators
+suitable for early vision.  We refer to them as "Logical/Linear"
+(L/L) operators, since they unify aspects of linear operator theory
+and boolean logic. A family of these operators appropriate for
+measuring the low-order differential structure of image curves is
+developed.  These L/L operators are derived by decomposing a linear
+model into logical components to ensure that certain structural
+preconditions for the existence of an image curve are upheld.
+Tangential conditions guarantee continuity, while normal conditions
+select and categorize contrast profiles.  The resulting operators
+allow for coarse measurement of curvilinear differential structure
+(orientation and curvature) while successfully segregating edge- and
+line-like features.  By thus reducing the incidence of false-positive
+responses, these operators are a substantial improvement over
+(thresholded) linear operators which attempt to resolve the same class
+of features.
+
+-------------------------------------------------------------------------------
+Lee Iverson     		SRI International
+leei@ai.sri.com			333 Ravenswood Ave., Menlo Park CA 94025
+http://www.ai.sri.com/~leei/	(415) 859-3307

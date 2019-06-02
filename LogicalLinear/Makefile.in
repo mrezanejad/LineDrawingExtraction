@@ -1,0 +1,203 @@
+# Copyright (c) 1995  McGill University and Lee Iverson
+
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation files
+# (the "Software"), to deal in the Software without restriction,
+# including the rights to use, copy, modify, merge, publish, and
+# distribute copies of the Software without fee, and to permit persons
+# to whom the Software is furnished to do so, subject to the following
+# conditions:
+
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+
+# Any sale of this software or any work derived from this software
+# shall be prohibited without written agreement from the copyright
+# holders.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT.  IN NO EVENT SHALL MCGILL UNIVERSITY BE LIABLE FOR
+# ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+# CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+VERSION         = 1.0.5
+
+prefix          = @prefix@
+exec_prefix     = @exec_prefix@
+
+srcdir          = @srcdir@
+VPATH           = @srcdir@
+
+BINDIR          = $(exec_prefix)/bin
+LIBDIR          = $(exec_prefix)/lib
+INCDIR          = $(prefix)/include/loglin
+MANDIR          = $(prefix)/man
+
+CC              = @CC@
+CFLAGS          = @CFLAGS@
+DEFS		= @DEFS@
+
+ALL_CFLAGS      = -I. -I$(srcdir) $(DEFS) $(CFLAGS)
+
+LDFLAGS         = -L$(LIBDIR) -L$(HOME)/$(ARCH)/lib
+LIBS            = $(LIB) @LIBS@
+
+RANLIB          = @RANLIB@
+RM		= @RM@
+CP		= @CP@
+MV		= @MV@
+MKDIR		= @MKDIR@
+SED		= @SED@
+TAR		= @TAR@
+
+INSTALL         = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA    = @INSTALL_DATA@
+
+PROGS = \
+    make-kern \
+    pgmcxconv \
+    pgmloglin 
+
+SCRIPTS = \
+    $(srcdir)/ps-sel \
+    $(srcdir)/ps-scale \
+    $(srcdir)/ps-png
+
+SRCS = $(srcdir)/image.c $(srcdir)/basis.c $(srcdir)/pgm.c \
+    $(srcdir)/kern.c $(srcdir)/label.c $(srcdir)/loglin.c \
+    $(srcdir)/image.t $(srcdir)/image-8.c \
+    $(srcdir)/cxconv.t $(srcdir)/cxconv-8.c $(srcdir)/cxconv-16.c \
+    $(srcdir)/cxconv-32.c $(srcdir)/cxconv-f.c \
+    $(srcdir)/alloca.c 
+
+OBJS = @ALLOCA@ \
+    image.o image-8.o basis.o pgm.o kern.o label.o loglin.o \
+    cxconv-8.o cxconv-16.o cxconv-32.o cxconv-f.o
+
+LIB = libloglin.a
+
+CONFIG_H = llconfig.h
+
+INCS = $(srcdir)/image.h $(srcdir)/ansidecl.h $(srcdir)/alloc.h \
+    $(srcdir)/conv.h \
+    $(srcdir)/basis.h $(srcdir)/basis-il.h \
+    $(srcdir)/label.h $(srcdir)/label-il.h \
+    $(srcdir)/loglin.h $(srcdir)/loglin-il.h
+
+MAN1PAGES = $(srcdir)/pgmloglin.1
+
+MAN3PAGES = 
+
+MANIFEST = \
+    $(srcdir)/README $(srcdir)/ANNOUNCE $(srcdir)/install-sh \
+    $(srcdir)/Makefile.in $(srcdir)/configure.in $(srcdir)/configure \
+    $(srcdir)/llconfig.h.in \
+    $(srcdir)/make-kern.c $(srcdir)/pgmcxconv.c $(srcdir)/pgmloglin.c \
+    $(SRCS) $(INCS) $(SCRIPTS) \
+    $(MAN1PAGES) $(MAN3PAGES) \
+    $(srcdir)/Paolina.pgm 
+
+all: $(PROGS) $(LIB)
+
+.c.o:
+	$(CC) -c $(ALL_CFLAGS) $<
+
+make-kern: make-kern.o $(LIB)
+	@-$(RM) -f make-kern
+	$(CC) -o make-kern make-kern.o $(LDFLAGS) $(LIBS)
+
+pgmcxconv: pgmcxconv.o $(LIB)
+	@-$(RM) -f pgmcxconv
+	$(CC) -o pgmcxconv pgmcxconv.o $(LDFLAGS) $(LIBS)
+
+pgmloglin: pgmloglin.o $(LIB)
+	@-$(RM) -f pgmloglin
+	$(CC) -o pgmloglin pgmloglin.o $(LDFLAGS) $(LIBS)
+
+libloglin.a: $(OBJS)
+	$(AR) $(ARFLAGS) libloglin.a $(OBJS)
+	$(RANLIB) libloglin.a
+
+install: install-bin install-lib install-man
+
+install-bin:
+	-@if [ ! -d $(BINDIR) ]; then $(MKDIR) $(BINDIR); fi
+	for i in $(PROGS); do \
+	  $(INSTALL_PROGRAM) $$i $(BINDIR); \
+	done
+
+install-lib:
+	-@if [ ! -d $(LIBDIR) ]; then $(MKDIR) $(LIBDIR); fi
+	$(INSTALL_DATA) $(LIB) $(LIBDIR);
+	-@if [ ! -d $(INCDIR) ]; then $(MKDIR) $(INCDIR); fi
+	$(INSTALL_DATA) $(CONFIG_H) $(INCDIR)
+	for i in $(INCS); do \
+	  $(INSTALL_DATA) $$i $(INCDIR); \
+	done
+
+install-man:
+	-@if [ ! -d $(MANDIR) ]; then $(MKDIR) $(MANDIR); fi
+	if -n "$(MAN1PAGES)"; then \
+	  if [ ! -d $(MANDIR)/man1 ]; then $(MKDIR) $(MANDIR)/man1; fi; \
+	  for i in $(MAN1PAGES); do \
+	    $(INSTALL_DATA) $$i $(MANDIR)/man1; \
+	  done; \
+	fi
+	if -n "$(MAN3PAGES)"; then \
+	  if [ ! -d $(MANDIR)/man3 ]; then $(MKDIR) $(MANDIR)/man3; fi; \
+	  for i in $(MAN3PAGES); do \
+	    $(INSTALL_DATA) $$i $(MANDIR)/man3; \
+	  done; \
+	fi
+
+clean:
+	-$(RM) -f *.o *.a *~
+	-$(RM) -f $(PROGS)
+
+realclean: clean
+	-$(RM) -f .depend
+	-$(RM) -f ${srcdir}/stamp-h ${srcdir}/stamp-h.in
+
+dist:
+	-$(MKDIR) loglin-$(VERSION)
+	for i in $(MANIFEST); do \
+	  $(CP) $$i loglin-$(VERSION); \
+	done
+	$(TAR) zcf loglin-$(VERSION).tar.gz loglin-$(VERSION)
+	$(RM) -rf loglin-$(VERSION)
+
+
+${srcdir}/configure: configure.in
+	cd ${srcdir} && autoconf
+
+# autoheader might not change llconfig.h.in, so touch a stamp file.
+${srcdir}/llconfig.h.in: stamp-h.in
+${srcdir}/stamp-h.in: configure.in
+	cd ${srcdir} && autoheader
+	echo timestamp > ${srcdir}/stamp-h.in
+     
+llconfig.h: stamp-h
+stamp-h: llconfig.h.in config.status
+	./config.status
+
+Makefile: Makefile.in config.status
+	./config.status
+
+config.status: configure
+	./config.status --recheck
+
+# This calculates dependencies and then uses them
+depend: .depend
+	$(SED) -n -e '1,/^# DO NOT DELETE/p' Makefile > Makefile.d
+	cat .depend >> Makefile.d
+	@$(MV) Makefile Makefile.bak
+	$(MV) Makefile.d Makefile
+
+.depend: $(SRCS) $(INCS) $(CONFIG_H)
+	$(CC) -M $(ALL_CFLAGS) $(srcdir)/*.c > .depend
+
+# DO NOT DELETE -- Add dependencies after here #
