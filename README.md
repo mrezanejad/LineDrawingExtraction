@@ -73,7 +73,9 @@ wine pgmloglin.exe -E input.jpg output.ps
 ```
 pgmloglin.exe -E  Paolina.pgm result.ps
 ```
-<img src='readme_images/Palona_original.JPG' width=35%/> <img src='readme_images/Palona.JPG' width=35%/> 
+<p align = "center">
+<img src='readme_images/Palona_original.JPG' width=35%/> <img src='readme_images/palona.JPG' width=35%/> 
+  </p>
 
 
 
