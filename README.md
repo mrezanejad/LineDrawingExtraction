@@ -48,7 +48,7 @@ make
 
 ## Usage
 
-Usage: %s [-ENP] [-n<ndirs>] [-d<degree>] [-t<thresh>] [input] [out]\n  
+Usage:  `[-ENP] [-n<ndirs>] [-d<degree>] [-t<thresh>] [input] [out]`  
 
 Example:
 
