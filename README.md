@@ -11,3 +11,4 @@ The original version of this program works with just `pgm` (portable gray map) i
 
 <img src='readme_images/LogicalLinearExample.jpg' width=100%/> 
 
+This approach is devised to recover image curves while preserving singularities and junctions. Operators are designed to respond when any of the three conditions of bein an Edge (**E**), or a Positive Constrast Line (**P**), or a Negative Constrast Line (**N**) is met locally in an image, and if so, either an edge, or a line is reported.
