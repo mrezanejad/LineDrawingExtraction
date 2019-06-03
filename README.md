@@ -11,7 +11,7 @@ The original version of this program works with just `pgm` (portable gray map) i
 
 <img src='readme_images/LogicalLinearExample.jpg' width=100%/> 
 
-This approach is devised to recover image curves while preserving singularities and junctions. Operators are designed to respond when any of the three conditions of bein an Edge (**E**), or a Positive Constrast Line (**P**), or a Negative Constrast Line (**N**) is met locally in an image, and if so, either an edge, or a line is reported.
+This approach is devised to recover image curves while preserving singularities and junctions. Operators are designed to respond when any of the three conditions of being an Edge (**E**), or a Positive Constrast Line (**P**), or a Negative Constrast Line (**N**) is met locally in an image, and if so, either an edge, or a line is reported.
 
 
 
@@ -101,13 +101,6 @@ If you are new to git, you can learn more about it [here](https://git-scm.com/do
 If you use the our SalienceScoresForScenes package, we appreciate it if you cite the following papers:
 
 ```
-@InProceedings{rezanejad2019scene,
-author = {Rezanejad, Morteza and Downs, Gabriel and Wilder, John and Walther, Dirk B and Jepson, Allan and Dickinson, Sven and Siddiqi, Kaleem},
-title = {Scene Categorization from Contours: Medial Axis Based Salience Measures},
-booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-month = {June},
-year = {2019}
-}
 @ARTICLE{iverson_llOps, 
 author={L. A. {Iverson} and S. W. {Zucker}}, 
 journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
@@ -121,8 +114,13 @@ doi={10.1109/34.464562},
 ISSN={0162-8828}, 
 month={Oct},}
 
-
-
+@InProceedings{rezanejad2019scene,
+author = {Rezanejad, Morteza and Downs, Gabriel and Wilder, John and Walther, Dirk B and Jepson, Allan and Dickinson, Sven and Siddiqi, Kaleem},
+title = {Scene Categorization from Contours: Medial Axis Based Salience Measures},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2019}
+}
 ```
 
 ## Contact
