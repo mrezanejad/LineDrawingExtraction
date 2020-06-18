@@ -101,6 +101,14 @@ If you are new to git, you can learn more about it [here](https://git-scm.com/do
 If you use the our LineDrawingExtraction package, we appreciate it if you cite the following papers:
 
 ```
+@InProceedings{rezanejad2019scene,
+author = {Rezanejad, Morteza and Downs, Gabriel and Wilder, John and Walther, Dirk B and Jepson, Allan and Dickinson, Sven and Siddiqi, Kaleem},
+title = {Scene Categorization from Contours: Medial Axis Based Salience Measures},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2019}
+}
+
 @ARTICLE{iverson_llOps, 
 author={L. A. {Iverson} and S. W. {Zucker}}, 
 journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
@@ -113,14 +121,6 @@ keywords={computer vision;edge detection;feature extraction;Boolean functions;im
 doi={10.1109/34.464562}, 
 ISSN={0162-8828}, 
 month={Oct},}
-
-@InProceedings{rezanejad2019scene,
-author = {Rezanejad, Morteza and Downs, Gabriel and Wilder, John and Walther, Dirk B and Jepson, Allan and Dickinson, Sven and Siddiqi, Kaleem},
-title = {Scene Categorization from Contours: Medial Axis Based Salience Measures},
-booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-month = {June},
-year = {2019}
-}
 ```
 
 ## Contact
